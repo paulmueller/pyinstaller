@@ -64,17 +64,17 @@ set server_port [fconfigure $server_socket -sockname]
 # This environment variable is shared between the python and the tcl
 # interpreter and publishes the port the tcp server socket is available
 if { [info exists ::env(_PYIBoot_SPLASH)] } {
-   puts "Splash: _PYIBoot_SPLASH is set to '$::env(_PYIBoot_SPLASH)'"
+   # puts "Splash: _PYIBoot_SPLASH is set to '$::env(_PYIBoot_SPLASH)'"
    if {[string match *handled* $::env(_PYIBoot_SPLASH)]} {
-   puts "Splash: disabled"
+   # puts "Splash: disabled"
    wm withdraw .
    exit
    } else {
-   puts "Splash: enabled"
+   # puts "Splash: enabled"
    set env(_PYIBoot_SPLASH) [lindex $server_port 2]
    }
 } else {
-puts "Splash: enabled"
+# puts "Splash: enabled"
 set env(_PYIBoot_SPLASH) [lindex $server_port 2]
 }
 """
