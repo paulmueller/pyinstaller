@@ -72,6 +72,9 @@ if { [info exists ::env(_PYIBoot_SPLASH)] } {
    puts "Splash: enabled"
    set env(_PYIBoot_SPLASH) [lindex $server_port 2]
    }
+} else {
+puts "Splash: enabled"
+set env(_PYIBoot_SPLASH) [lindex $server_port 2]
 }
 """
 
