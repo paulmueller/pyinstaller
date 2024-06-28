@@ -95,11 +95,14 @@ def _initialize():
 
 # We expect a splash screen from the bootloader, but if _PYIBoot_SPLASH is not set, the module cannot connect to it.
 try:
-    _ipc_port = int(os.environ['_PYIBoot_SPLASH'])
-    del os.environ['_PYIBoot_SPLASH']
-    # Initialize the connection upon importing this module. This will establish a connection to the bootloader's TCP
-    # server socket.
-    _initialize()
+    _pyiboot_splash = os.environ['_PYIBoot_SPLASH']
+    if _pyiboot_splash != "handled":
+        _ipc_port = int(_pyiboot_splash)
+        del os.environ['_PYIBoot_SPLASH']
+        # Initialize the connection upon importing this module. This will establish a connection to the bootloader's TCP
+        # server socket.
+        _initialize()
+        os.environ["_PYIBoot_SPLASH"] = "handled"
 except (KeyError, ValueError) as _err:
     # log-level: warning
     _log(
