@@ -67,6 +67,7 @@ if { [info exists ::env(_PYIBoot_SPLASH)] } {
    puts "Splash: _PYIBoot_SPLASH is set to '$::env(_PYIBoot_SPLASH)'"
    if {[string match *handled* $::env(_PYIBoot_SPLASH)]} {
    puts "Splash: disabled"
+   wm withdraw .
    exit
    } else {
    puts "Splash: enabled"
